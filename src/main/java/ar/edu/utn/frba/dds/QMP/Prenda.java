@@ -18,7 +18,7 @@ public class Prenda {
   }
   public static PrendaBuilder tipo(Tipo tipo) {
     if(tipo == null)
-      throw new CamposObligatoriosIncompletos(
+      throw new CamposObligatoriosIncompletosException(
           "La prenda debe tener por lo menos un tipo, material y color principal.");
     return new PrendaBuilder(tipo);
   }
@@ -49,7 +49,7 @@ public class Prenda {
     }
     public Prenda build() {
       if(this.material == null || this.colorPrincipal == null)
-        throw new CamposObligatoriosIncompletos(
+        throw new CamposObligatoriosIncompletosException(
             "La prenda debe tener por lo menos un tipo, material y color principal.");
       return new Prenda(this);
     }

@@ -21,7 +21,7 @@ public class PrendaBuilderTest {
           .tipo(Tipo.REMERA)
           .setColorPrincipal(ColorEnum.AZUL)
           .build();
-    } catch (CamposObligatoriosIncompletos exception) {
+    } catch (CamposObligatoriosIncompletosException exception) {
       assertTrue(exception.getMessage().contains("La prenda debe tener por lo menos un tipo, material y color principal."));
     }
   }
@@ -33,7 +33,7 @@ public class PrendaBuilderTest {
             .tipo(Tipo.REMERA)
             .setMaterial(Material.LANA)
             .build();
-      } catch (CamposObligatoriosIncompletos exception) {
+      } catch (CamposObligatoriosIncompletosException exception) {
         assertTrue(exception.getMessage().contains("La prenda debe tener por lo menos un tipo, material y color principal."));
       }
     }
@@ -45,7 +45,7 @@ public class PrendaBuilderTest {
           .tipo(null)
           .setMaterial(Material.LANA)
           .build();
-    } catch (CamposObligatoriosIncompletos exception) {
+    } catch (CamposObligatoriosIncompletosException exception) {
       assertTrue(exception.getMessage().contains("La prenda debe tener por lo menos un tipo, material y color principal."));
     }
   }
