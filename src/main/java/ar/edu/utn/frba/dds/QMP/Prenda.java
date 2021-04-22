@@ -1,7 +1,5 @@
 package ar.edu.utn.frba.dds.QMP;
 
-import jdk.internal.util.xml.impl.Pair;
-
 public class Prenda {
   private final Categoria categoria;
   private final Tipo tipo;
