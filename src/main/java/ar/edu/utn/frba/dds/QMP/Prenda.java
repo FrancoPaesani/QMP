@@ -1,14 +1,12 @@
 package ar.edu.utn.frba.dds.QMP;
 
 public class Prenda {
-  private final Categoria categoria;
   private final Tipo tipo;
   private final Material material;
-  private final ColorEnum colorPrincipal;
-  private final ColorEnum colorSecundario;
+  private final Color colorPrincipal;
+  private final Color colorSecundario;
 
   private Prenda(PrendaBuilder builder) {
-    this.categoria = builder.categoria;
     this.tipo = builder.tipo;
     this.material = builder.material;
     this.colorPrincipal = builder.colorPrincipal;
@@ -17,32 +15,30 @@ public class Prenda {
   public static PrendaBuilder tipo(Tipo tipo) {
     if(tipo == null)
       throw new CamposObligatoriosIncompletosException(
-          "La prenda debe tener por lo menos un tipo, material y color principal.");
+          "La prenda debe tener un tipo.");
     return new PrendaBuilder(tipo);
   }
 
   public static class PrendaBuilder {
     // Parámetros obligatorios
     private final Tipo tipo;
-    private Categoria categoria;
     private Material material;
-    private ColorEnum colorPrincipal;
+    private Color colorPrincipal;
     // Parámetro opcional
-    private ColorEnum colorSecundario = null;
+    private Color colorSecundario = null;
 
     private PrendaBuilder(Tipo tipo) {
       this.tipo = tipo;
-      this.categoria = tipo.getCategoria();
     }
     public PrendaBuilder setMaterial(Material material) {
       this.material = material;
       return this;
     }
-    public PrendaBuilder setColorPrincipal(ColorEnum colorPrincipal) {
+    public PrendaBuilder setColorPrincipal(Color colorPrincipal) {
       this.colorPrincipal = colorPrincipal;
       return this;
     }
-    public void setColorSecundario(ColorEnum colorSecundario) {
+    public void setColorSecundario(Color colorSecundario) {
       this.colorSecundario = colorSecundario;
     }
     public Prenda build() {
@@ -53,9 +49,6 @@ public class Prenda {
     }
 
   }
-  public Tipo getTipo() {return this.tipo;}
-  public Categoria getCategoria() {return this.categoria;}
-  public Material getMaterial() {return this.material;}
-  public ColorEnum getColorPrincipal() {return this.colorPrincipal;}
-  public ColorEnum getColorSecundario() {return this.colorSecundario;}
+
+  public Categoria getCategoria() {return this.tipo.getCategoria();}
 }

@@ -6,10 +6,10 @@ import static org.junit.Assert.*;
 public class PrendaBuilderTest {
 
   @Test
-  public void RemeraDeAlgodonDeColorRojoTieneCategoriaPrenda_Superior() {
+  public void RemeraDeAlgodonDeColorNegraTieneCategoriaPrenda_Superior() {
     Prenda prenda = Prenda.tipo(Tipo.REMERA)
         .setMaterial(Material.ALGODON)
-        .setColorPrincipal(ColorEnum.ROJO)
+        .setColorPrincipal(new Color("#ffffff"))
         .build();
     assertEquals(prenda.getCategoria().toString(),"PRENDA_SUPERIOR");
   }
@@ -19,7 +19,7 @@ public class PrendaBuilderTest {
     try {
       Prenda prenda = Prenda
           .tipo(Tipo.REMERA)
-          .setColorPrincipal(ColorEnum.AZUL)
+          .setColorPrincipal(new Color("#ffffff"))
           .build();
     } catch (CamposObligatoriosIncompletosException exception) {
       assertTrue(exception.getMessage().contains("La prenda debe tener por lo menos un tipo, material y color principal."));
@@ -46,18 +46,18 @@ public class PrendaBuilderTest {
           .setMaterial(Material.LANA)
           .build();
     } catch (CamposObligatoriosIncompletosException exception) {
-      assertTrue(exception.getMessage().contains("La prenda debe tener por lo menos un tipo, material y color principal."));
+      assertTrue(exception.getMessage().contains("La prenda debe tener un tipo."));
     }
   }
 
   @Test
-  public void usuarioAgregaAGuardarropasPantalonDeAlgodonDeColorAzul() {
+  public void usuarioAgregaAGuardarropasPantalonDeAlgodonDeColorBlancoo() {
     Usuario pepe = new Usuario();
     pepe.agregarPrenda(
         Prenda
         .tipo(Tipo.PANTALON)
         .setMaterial(Material.ALGODON)
-        .setColorPrincipal(ColorEnum.AZUL)
+        .setColorPrincipal(new Color("#000000"))
         .build()
     );
     assertEquals(pepe.getGuardarropa().getPrendas().size(),1);
