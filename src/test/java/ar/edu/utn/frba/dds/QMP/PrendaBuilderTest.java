@@ -49,17 +49,5 @@ public class PrendaBuilderTest {
       assertTrue(exception.getMessage().contains("La prenda debe tener un tipo."));
     }
   }
-
-  @Test
-  public void usuarioAgregaAGuardarropasPantalonDeAlgodonDeColorBlancoo() {
-    Usuario pepe = new Usuario();
-    pepe.agregarPrenda(
-        Prenda
-        .tipo(Tipo.PANTALON)
-        .setMaterial(Material.ALGODON)
-        .setColorPrincipal(new Color("#000000"))
-        .build()
-    );
-    assertEquals(pepe.getGuardarropa().getPrendas().size(),1);
-  }
+  
 }
