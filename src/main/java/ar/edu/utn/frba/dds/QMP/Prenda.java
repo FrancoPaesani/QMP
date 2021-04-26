@@ -21,4 +21,5 @@ public class Prenda {
 
   public Categoria getCategoria() {return this.tipo.getCategoria();}
   public Trama getTrama() {return this.material.getTrama();}
+  public Tipo getTipo() { return tipo; }
 }
