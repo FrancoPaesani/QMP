@@ -7,3 +7,4 @@ public class Color {
     this.rgb = rgb;
   }
 }
+

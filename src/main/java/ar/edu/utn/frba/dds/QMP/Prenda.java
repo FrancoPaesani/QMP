@@ -6,11 +6,11 @@ public class Prenda {
   private final Color colorPrincipal;
   private final Color colorSecundario;
 
-  private Prenda(PrendaBuilder builder) {
-    this.tipo = builder.tipo;
-    this.material = builder.material;
-    this.colorPrincipal = builder.colorPrincipal;
-    this.colorSecundario = builder.colorSecundario;
+  public Prenda(PrendaBuilder builder) {
+    this.tipo = builder.getTipo();
+    this.material = builder.getMaterial();
+    this.colorPrincipal = builder.getColorPrincipal();
+    this.colorSecundario = builder.getColorSecundario();
   }
   public static PrendaBuilder tipo(Tipo tipo) {
     if(tipo == null)
@@ -19,36 +19,6 @@ public class Prenda {
     return new PrendaBuilder(tipo);
   }
 
-  public static class PrendaBuilder {
-    // Parámetros obligatorios
-    private final Tipo tipo;
-    private Material material;
-    private Color colorPrincipal;
-    // Parámetro opcional
-    private Color colorSecundario = null;
-
-    private PrendaBuilder(Tipo tipo) {
-      this.tipo = tipo;
-    }
-    public PrendaBuilder setMaterial(Material material) {
-      this.material = material;
-      return this;
-    }
-    public PrendaBuilder setColorPrincipal(Color colorPrincipal) {
-      this.colorPrincipal = colorPrincipal;
-      return this;
-    }
-    public void setColorSecundario(Color colorSecundario) {
-      this.colorSecundario = colorSecundario;
-    }
-    public Prenda build() {
-      if(this.material == null || this.colorPrincipal == null)
-        throw new CamposObligatoriosIncompletosException(
-            "La prenda debe tener por lo menos un tipo, material y color principal.");
-      return new Prenda(this);
-    }
-
-  }
-
   public Categoria getCategoria() {return this.tipo.getCategoria();}
+  public Trama getTrama() {return this.material.getTrama();}
 }
