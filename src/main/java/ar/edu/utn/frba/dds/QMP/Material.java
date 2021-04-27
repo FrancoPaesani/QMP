@@ -3,7 +3,7 @@ package ar.edu.utn.frba.dds.QMP;
 public class Material {//TODO: ver si queda bien el material como clase
   private Trama trama = Trama.LISA;
 
-  public void Trama(Trama trama) {
+  public Material(Trama trama) {
     if(trama != null)
       this.trama = trama;
   }

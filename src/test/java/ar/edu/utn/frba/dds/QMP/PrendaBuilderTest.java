@@ -4,10 +4,28 @@ import static org.junit.Assert.*;
 
 
 public class PrendaBuilderTest {
-  final Material tela  = new Material();
-  final Material lana  = new Material();
-  final Material algodon  = new Material();
-  final Material jean = new Material();
+  final Material tela  = new Material(null);
+  final Material lana  = new Material(null);
+  final Material algodon  = new Material(null);
+  final Material jean = new Material(null);
+  Prenda remeraComun = Prenda
+      .tipo(Tipo.REMERA)
+      .setMaterial(jean)
+      .setTrama(Trama.A_CUADROS)
+      .setColorPrincipal(new Color("#00000"))
+      .build();
+  Prenda pantalonComun = Prenda
+      .tipo(Tipo.PANTALON)
+      .setMaterial(jean)
+      .setTrama(Trama.A_CUADROS)
+      .setColorPrincipal(new Color("#00000"))
+      .build();
+  Prenda zapatosComun = Prenda
+      .tipo(Tipo.ZAPATOS)
+      .setMaterial(jean)
+      .setTrama(Trama.A_CUADROS)
+      .setColorPrincipal(new Color("#00000"))
+      .build();
 
   @Test
   public void RemeraDeAlgodonDeColorNegraTieneCategoriaPrenda_Superior() {
@@ -74,6 +92,16 @@ public class PrendaBuilderTest {
         .setColorPrincipal(new Color("#00000"))
         .build();
     assertEquals(remeraNegra.getTrama(),Trama.A_CUADROS);
+  }
+
+  @Test
+  public void uniformeRemeraPantalonYZapatosSeCrea() {
+    Uniforme uniforme = Uniforme.crearUniforme().agregarPrenda(remeraComun)
+        .agregarPrenda(pantalonComun).agregarPrenda(zapatosComun).build();
+    assertEquals(uniforme.getPrendas().size(),3);
+    assertTrue(uniforme.getPrendasDeCategoria(Categoria.CALZADO).stream()
+        .allMatch(prenda -> prenda.getCategoria().equals(Categoria.CALZADO)));
+
   }
 
 

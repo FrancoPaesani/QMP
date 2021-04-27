@@ -1,55 +1,47 @@
 package ar.edu.utn.frba.dds.QMP;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Uniforme {
-  private Prenda prendaSuperior;
-  private Prenda prendaInferior;
-  private Prenda calzado;
+  private ArrayList<Prenda> prendas = new ArrayList<>();
+  private static final ArrayList<Categoria> categoriasPrendas = new ArrayList<>(
+      Arrays.asList(Categoria.PRENDA_SUPERIOR,
+          Categoria.PRENDA_INFERIOR,Categoria.CALZADO));
 
-  public Uniforme(Prenda superior, Prenda inferior, Prenda calzado) {
-    this.prendaSuperior = superior;
-    this.prendaInferior = inferior;
-    this.calzado = calzado;
+  public Uniforme(ArrayList<Prenda> prendas) {
+    this.prendas = (ArrayList<Prenda>) prendas.clone();
   }
 
-  public UniformeBuilder crearUniforme() {
+  public static UniformeBuilder crearUniforme() {
     return new UniformeBuilder();
   }
 
-  public static class UniformeBuilder {
-    private Prenda prendaSuperior;
-    private Prenda prendaInferior;
-    private Prenda calzado;
-
-    public UniformeBuilder setPrendaSuperior(Prenda prenda) {
-      if(prenda.getCategoria() == Categoria.PRENDA_SUPERIOR)
-        this.prendaSuperior = prenda;
-      else
-        throw new UniformeTipoInvalidoException
-            ("La prenda ingresada debe ser de tipo superior.");
-      return this;
-    }
-    public UniformeBuilder setPrendaInferior(Prenda prenda) {
-      if(prenda.getCategoria() == Categoria.PRENDA_INFERIOR)
-        this.prendaSuperior = prenda;
-      else
-        throw new UniformeTipoInvalidoException
-            ("La prenda ingresada debe ser de tipo inferior.");
-      return this;
-    }
-    public UniformeBuilder setCalzado(Prenda prenda) {
-      if(prenda.getCategoria() == Categoria.CALZADO)
-        this.prendaSuperior = prenda;
-      else
-        throw new UniformeTipoInvalidoException
-            ("La prenda ingresada debe ser de tipo calzado.");
-      return this;
-    }
-
-    public Uniforme build() {
-      return new Uniforme(prendaSuperior,prendaInferior,calzado);
-    }
-
+  public List<Prenda> getPrendasDeCategoria(Categoria categoria) {
+    return prendas.stream().filter(prenda -> prenda.getCategoria() == categoria).collect(Collectors.toList());
   }
+
+  public ArrayList<Prenda> getPrendas() { return prendas; }
+
+    public static class UniformeBuilder {
+      private final ArrayList<Prenda> prendas = new ArrayList<>();
+
+      public UniformeBuilder agregarPrenda(Prenda prenda) {prendas.add(prenda);return this;}
+
+      public boolean tienePrendaPorCategoria() { return this.mapCategoriasPrendas().containsAll(categoriasPrendas); }
+
+      public ArrayList<Categoria> mapCategoriasPrendas() {
+       return (ArrayList<Categoria>) prendas.stream().map(Prenda::getCategoria).collect(Collectors.toList());
+     }
+
+     public Uniforme build() {
+       if(tienePrendaPorCategoria() && prendas.size()==3)
+         return new Uniforme(prendas);
+       else
+          throw new UniformeInvalidoException("El uniforme no cumple con las categorias o tiene tamaño mayor.");
+      }
+    }
+
 }
