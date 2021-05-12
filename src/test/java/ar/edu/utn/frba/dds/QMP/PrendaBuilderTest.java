@@ -4,25 +4,21 @@ import static org.junit.Assert.*;
 
 
 public class PrendaBuilderTest {
-  final Material tela  = new Material(null);
-  final Material lana  = new Material(null);
-  final Material algodon  = new Material(null);
-  final Material jean = new Material(null);
   Prenda remeraComun = Prenda
       .tipo(Tipo.REMERA)
-      .setMaterial(jean)
+      .setMaterial(Material.ALGODON)
       .setTrama(Trama.A_CUADROS)
       .setColorPrincipal(new Color("#00000"))
       .build();
   Prenda pantalonComun = Prenda
       .tipo(Tipo.PANTALON)
-      .setMaterial(jean)
+      .setMaterial(Material.CUERO)
       .setTrama(Trama.A_CUADROS)
       .setColorPrincipal(new Color("#00000"))
       .build();
   Prenda zapatosComun = Prenda
       .tipo(Tipo.ZAPATOS)
-      .setMaterial(jean)
+      .setMaterial(Material.CUERO)
       .setTrama(Trama.A_CUADROS)
       .setColorPrincipal(new Color("#00000"))
       .build();
@@ -30,7 +26,7 @@ public class PrendaBuilderTest {
   @Test
   public void RemeraDeAlgodonDeColorNegraTieneCategoriaPrenda_Superior() {
     Prenda prenda = Prenda.tipo(Tipo.REMERA)
-        .setMaterial(algodon)
+        .setMaterial(Material.ALGODON)
         .setColorPrincipal(new Color("#ffffff"))
         .build();
     assertEquals(prenda.getCategoria().toString(),"PRENDA_SUPERIOR");
@@ -43,8 +39,8 @@ public class PrendaBuilderTest {
           .tipo(Tipo.REMERA)
           .setColorPrincipal(new Color("#ffffff"))
           .build();
-    } catch (CamposObligatoriosIncompletosException exception) {
-      assertTrue(exception.getMessage().contains("La prenda debe tener por lo menos un tipo, material y color principal."));
+    } catch (NullPointerException exception) {
+      assertTrue(exception.getMessage().contains("La prenda debe tener un material."));
     }
   }
 
@@ -53,10 +49,10 @@ public class PrendaBuilderTest {
       try {
         Prenda prenda = Prenda
             .tipo(Tipo.REMERA)
-            .setMaterial(lana)
+            .setMaterial(Material.ALGODON)
             .build();
-      } catch (CamposObligatoriosIncompletosException exception) {
-        assertTrue(exception.getMessage().contains("La prenda debe tener por lo menos un tipo, material y color principal."));
+      } catch (NullPointerException exception) {
+        assertTrue(exception.getMessage().contains("La prenda debe tener un color principal."));
       }
     }
 
@@ -65,7 +61,7 @@ public class PrendaBuilderTest {
     try {
       Prenda prenda = Prenda
           .tipo(null)
-          .setMaterial(lana)
+          .setMaterial(Material.LANA)
           .build();
 
     } catch (CamposObligatoriosIncompletosException exception) {
@@ -77,7 +73,7 @@ public class PrendaBuilderTest {
   public void remeraNegraDeAlgodonSinTramaEsLisa() {
     Prenda remeraNegra = Prenda
         .tipo(Tipo.REMERA)
-        .setMaterial(algodon)
+        .setMaterial(Material.ALGODON)
         .setColorPrincipal(new Color("#ffffff"))
         .build();
     assertEquals(remeraNegra.getTrama(),Trama.LISA);
@@ -87,11 +83,24 @@ public class PrendaBuilderTest {
   public void puedoCrearUnPantalonBlancoACuadros() {
     Prenda remeraNegra = Prenda
         .tipo(Tipo.PANTALON)
-        .setMaterial(jean)
+        .setMaterial(Material.JEAN)
         .setTrama(Trama.A_CUADROS)
         .setColorPrincipal(new Color("#00000"))
+        .setColorSecundario(new Color("#99dd77"))
         .build();
     assertEquals(remeraNegra.getTrama(),Trama.A_CUADROS);
+  }
+
+  @Test
+  public void unaRemeraNoPuedeSerDeMaterialJean() {
+    try {
+      Prenda
+              .tipo(Tipo.REMERA)
+              .setMaterial(Material.JEAN);
+    }
+    catch (MaterialYTipoIncompatiblesException exception) {
+      assertTrue(exception.getMessage().contains("El tipo [REMERA] no permite al material [JEAN]"));
+    }
   }
 
   @Test
@@ -101,7 +110,6 @@ public class PrendaBuilderTest {
     assertEquals(uniforme.getPrendas().size(),3);
     assertTrue(uniforme.getPrendasDeCategoria(Categoria.CALZADO).stream()
         .allMatch(prenda -> prenda.getCategoria().equals(Categoria.CALZADO)));
-
   }
 
 

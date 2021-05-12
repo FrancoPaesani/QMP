@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Uniforme {
+public class Uniforme {//TODO fabricas de uniformes. 3 prendas solas cada unif.
   private ArrayList<Prenda> prendas = new ArrayList<>();
   private static final ArrayList<Categoria> categoriasPrendas = new ArrayList<>(
       Arrays.asList(Categoria.PRENDA_SUPERIOR,
