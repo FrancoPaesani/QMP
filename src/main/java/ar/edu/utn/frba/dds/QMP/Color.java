@@ -6,5 +6,6 @@ public class Color {
   public Color(String rgb) {
     this.rgb = rgb;
   }
+  public String getRgb() { return rgb; }
 }
 

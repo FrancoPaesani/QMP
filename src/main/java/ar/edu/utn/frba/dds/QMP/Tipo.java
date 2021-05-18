@@ -6,8 +6,11 @@ import java.util.List;
 
 public enum Tipo {
   REMERA(Categoria.PRENDA_SUPERIOR, Arrays.asList(Material.ALGODON)),
-  PANTALON(Categoria.PRENDA_INFERIOR, Arrays.asList(Material.CUERO,Material.ALGODON, Material.JEAN)),
+  CHOMBA(Categoria.PRENDA_SUPERIOR, Arrays.asList(Material.ALGODON,Material.PIQUE)),
+  CAMISA(Categoria.PRENDA_SUPERIOR, Arrays.asList(Material.ALGODON)),
+  PANTALON(Categoria.PRENDA_INFERIOR, Arrays.asList(Material.CUERO,Material.ALGODON, Material.JEAN, Material.ACETATO)),
   ZAPATOS(Categoria.CALZADO, Arrays.asList(Material.LANA,Material.CUERO)),
+  ZAPATILLAS(Categoria.CALZADO, Arrays.asList(Material.LANA,Material.CUERO,Material.ALGODON)),
   GORRA(Categoria.ACCESORIO, Arrays.asList(Material.CUERO,Material.ALGODON,Material.LANA));
   private final List<Material> materialesPosibles = new ArrayList<>();
   private final Categoria categoria;

@@ -1,6 +1,8 @@
 package ar.edu.utn.frba.dds.QMP;
 
-import java.util.List;
+import ar.edu.utn.frba.dds.QMP.excepciones.CamposObligatoriosIncompletosException;
+import ar.edu.utn.frba.dds.QMP.excepciones.MaterialYTipoIncompatiblesException;
+
 import java.util.Objects;
 
 public class Borrador {

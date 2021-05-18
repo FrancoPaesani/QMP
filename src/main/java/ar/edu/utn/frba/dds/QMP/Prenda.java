@@ -23,4 +23,6 @@ public class Prenda {
 
   public Categoria getCategoria() {return this.tipo.getCategoria();}
   public Trama getTrama() { return trama; }
+  public Color getColorPrincipal() { return colorPrincipal; }
+  public Material getMaterial() { return material; }
 }
