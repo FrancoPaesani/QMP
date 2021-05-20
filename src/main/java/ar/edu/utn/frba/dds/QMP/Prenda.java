@@ -1,54 +1,28 @@
 package ar.edu.utn.frba.dds.QMP;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Prenda {
   private final Tipo tipo;
   private final Material material;
+  private Trama trama;
   private final Color colorPrincipal;
   private final Color colorSecundario;
 
-  private Prenda(PrendaBuilder builder) {
-    this.tipo = builder.tipo;
-    this.material = builder.material;
-    this.colorPrincipal = builder.colorPrincipal;
-    this.colorSecundario = builder.colorSecundario;
+  public Prenda(Tipo tipo, Material material, Trama trama, Color colorPrincipal, Color colorSecundario) {
+    this.tipo = tipo;
+    this.material = material;
+    this.trama = trama;
+    this.colorPrincipal = colorPrincipal;
+    this.colorSecundario = colorSecundario;
   }
-  public static PrendaBuilder tipo(Tipo tipo) {
-    if(tipo == null)
-      throw new CamposObligatoriosIncompletosException(
-          "La prenda debe tener un tipo.");
-    return new PrendaBuilder(tipo);
-  }
-
-  public static class PrendaBuilder {
-    // Parámetros obligatorios
-    private final Tipo tipo;
-    private Material material;
-    private Color colorPrincipal;
-    // Parámetro opcional
-    private Color colorSecundario = null;
-
-    private PrendaBuilder(Tipo tipo) {
-      this.tipo = tipo;
-    }
-    public PrendaBuilder setMaterial(Material material) {
-      this.material = material;
-      return this;
-    }
-    public PrendaBuilder setColorPrincipal(Color colorPrincipal) {
-      this.colorPrincipal = colorPrincipal;
-      return this;
-    }
-    public void setColorSecundario(Color colorSecundario) {
-      this.colorSecundario = colorSecundario;
-    }
-    public Prenda build() {
-      if(this.material == null || this.colorPrincipal == null)
-        throw new CamposObligatoriosIncompletosException(
-            "La prenda debe tener por lo menos un tipo, material y color principal.");
-      return new Prenda(this);
-    }
-
+  public static Borrador tipo(Tipo tipo) {
+    return new Borrador(tipo);
   }
 
   public Categoria getCategoria() {return this.tipo.getCategoria();}
+  public Trama getTrama() { return trama; }
+  public Color getColorPrincipal() { return colorPrincipal; }
+  public Material getMaterial() { return material; }
 }
