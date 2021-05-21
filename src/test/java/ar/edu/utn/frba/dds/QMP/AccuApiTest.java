@@ -3,18 +3,22 @@ package ar.edu.utn.frba.dds.QMP;
 import ar.edu.utn.frba.dds.accuWeather.AccuWeatherAPI;
 import ar.edu.utn.frba.dds.accuWeather.CantLlamadasAccuWeather;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
 
 public class AccuApiTest {
-    AccuWeatherAPI api = new AccuWeatherAPI();
+
     @Test
     public void apiObtieneTemperaturaDeBuenosAires() {
-        assertNotNull(api.getBsAsWeather());
+        AccuWeatherAPI api = Mockito.mock(AccuWeatherAPI.class);
+        api.getBsAsWeather();
+        Mockito.verify(api,Mockito.only()).getBsAsWeather();
     }
 
     @Test
     public void noPuedoLlamarAPIMasDe10Veces() {
+        AccuWeatherAPI api = Mockito.mock(AccuWeatherAPI.class);
         try {
             for (int i = 0; i < 10 ; i++) {
                 api.getBsAsWeather();
@@ -27,6 +31,7 @@ public class AccuApiTest {
 
     @Test
     public void puedoLlamarAPIMenosDe10Veces() {
+        AccuWeatherAPI api = Mockito.mock(AccuWeatherAPI.class);
         try {
             for (int i = 0; i < 9 ; i++) {
                 api.getBsAsWeather();
