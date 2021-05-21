@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.dds.QMP;
+package ar.edu.utn.frba.dds.QMP.prenda;
 
 import ar.edu.utn.frba.dds.QMP.excepciones.CamposObligatoriosIncompletosException;
 import ar.edu.utn.frba.dds.QMP.excepciones.MaterialYTipoIncompatiblesException;

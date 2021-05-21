@@ -1,7 +1,4 @@
-package ar.edu.utn.frba.dds.QMP;
-
-import java.util.ArrayList;
-import java.util.List;
+package ar.edu.utn.frba.dds.QMP.prenda;
 
 public class Prenda {
   private final Tipo tipo;

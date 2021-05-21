@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.dds.QMP;
+package ar.edu.utn.frba.dds.QMP.prenda;
 
 public class Color {
   private final String rgb;
