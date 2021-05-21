@@ -1,9 +1,11 @@
 package ar.edu.utn.frba.dds.QMP;
+import ar.edu.utn.frba.dds.QMP.atuendo.Atuendo;
+import ar.edu.utn.frba.dds.QMP.atuendo.ColegioSanJuan;
+import ar.edu.utn.frba.dds.QMP.atuendo.InstitutoJohnson;
 import ar.edu.utn.frba.dds.QMP.excepciones.CamposObligatoriosIncompletosException;
 import ar.edu.utn.frba.dds.QMP.excepciones.MaterialYTipoIncompatiblesException;
-import ar.edu.utn.frba.dds.QMP.uniforme.ColegioSanJuan;
-import ar.edu.utn.frba.dds.QMP.uniforme.InstitutoJohnson;
-import ar.edu.utn.frba.dds.QMP.uniforme.Uniforme;
+import ar.edu.utn.frba.dds.QMP.prenda.*;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -110,13 +112,13 @@ public class PrendaBuilderTest {
 
   @Test
   public void uniformeJohnsonTieneZapatosNegros() {
-    Uniforme uniformeJohnson = new InstitutoJohnson().crearUniforme();
+    Atuendo uniformeJohnson = InstitutoJohnson.crearUniforme();
     assertEquals(uniformeJohnson.getCalzado().getColorPrincipal().getRgb(),new Color("#000000").getRgb());
   }
 
   @Test
   public void uniformeSanJuanTieneChombaPique() {
-    Uniforme uniformeSanJuan = new ColegioSanJuan().crearUniforme();
+    Atuendo uniformeSanJuan = ColegioSanJuan.crearUniforme();
     assertEquals(uniformeSanJuan.getPrendaSuperior().getMaterial(),Material.PIQUE);
   }
 

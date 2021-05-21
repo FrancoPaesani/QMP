@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.dds.QMP;
+package ar.edu.utn.frba.dds.QMP.prenda;
 
 import java.util.ArrayList;
 import java.util.Arrays;
