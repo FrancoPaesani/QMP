@@ -1,40 +1,43 @@
 package ar.edu.utn.frba.dds.QMP.guardarropas;
 
-import ar.edu.utn.frba.dds.QMP.prenda.Prenda;
+import ar.edu.utn.frba.dds.QMP.GeneradorDeSugerencias;
 import ar.edu.utn.frba.dds.QMP.atuendo.Atuendo;
-import com.google.common.collect.Sets;
+import ar.edu.utn.frba.dds.QMP.prenda.Prenda;
+import ar.edu.utn.frba.dds.QMP.prenda.Temperatura;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.google.common.collect.Sets.combinations;
 
 public class Guardarropas {
+
     private Set<Prenda> prendasSuperiores = new HashSet<>();
     private Set<Prenda> prendasInferiores = new HashSet<>();
     private Set<Prenda> calzados = new HashSet<>();
     private Set<Prenda> accesorios = new HashSet<>();
 
-    public Set<Atuendo> combinacionPrendasPrimarias() {
-        return Sets
-                .cartesianProduct(prendasSuperiores,prendasInferiores,calzados)
-                .stream()
-                .map((list) -> new Atuendo(list.get(0),list.get(1),list.get(2)))
+    public Guardarropas(Set<Prenda> prendasSuperiores, Set<Prenda> prendasInferiores, Set<Prenda> calzados, Set<Prenda> accesorios) {
+        this.prendasSuperiores = prendasSuperiores;
+        this.prendasInferiores = prendasInferiores;
+        this.calzados = calzados;
+        this.accesorios = accesorios;
+    }
+
+    public Set<Prenda> prendasParaTemperatura(Set<Prenda> prendas, Temperatura temperatura) {
+        return prendas.stream().filter(prenda ->
+                prenda.getTemperaturaMaxima().esMayor(temperatura))
                 .collect(Collectors.toSet());
     }
 
-    public Set<Atuendo> generarSugerencia(Integer maxAccesoriosUsuario) {
-        Set<Atuendo> combinacion = combinacionPrendasPrimarias();
-        List<Set<Prenda>> combAcc = new ArrayList<>(combinations(accesorios, maxAccesoriosUsuario));
-        combinacion
-                .forEach(atuendo ->
-                {
-                    int x = genNum(combAcc.size());
-                    atuendo.agregarAccesorios(new ArrayList<>(combAcc.get(x)));
-                    combAcc.remove(combAcc.get(x));
-                });
-        return combinacion;
+    public Set<Atuendo> sugerenciaParaTemperatura(Temperatura temperatura, GeneradorDeSugerencias generadorDeSugerencias) {
+        return generadorDeSugerencias.sugerenciaUnaPorCategoria(
+                prendasParaTemperatura(prendasSuperiores,temperatura),prendasParaTemperatura(prendasInferiores,temperatura),
+                prendasParaTemperatura(calzados,temperatura),prendasParaTemperatura(accesorios,temperatura));
     }
 
-    private int genNum(Integer limite) { return (int) (Math.random() * limite); }
+  /*  public void agregarSuperiores(Set<Prenda> prendasSuperiores) { this.prendasSuperiores.addAll(prendasSuperiores); }
+    public void agregarInferiores(Set<Prenda> prendasInferiores) { this.prendasInferiores.addAll(prendasInferiores); }
+    public void agregarCalzados(Set<Prenda> calzados) { this.calzados.addAll(calzados); }
+    public void agregarAccesorios(Set<Prenda> accesorios) { this.accesorios.addAll(accesorios); }*/
 }

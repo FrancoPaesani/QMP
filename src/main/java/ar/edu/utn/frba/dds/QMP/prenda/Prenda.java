@@ -6,13 +6,16 @@ public class Prenda {
   private Trama trama;
   private final Color colorPrincipal;
   private final Color colorSecundario;
+  private Temperatura temperaturaMaxima;
 
-  public Prenda(Tipo tipo, Material material, Trama trama, Color colorPrincipal, Color colorSecundario) {
+  public Prenda(Tipo tipo, Material material, Trama trama, Color colorPrincipal,
+                Color colorSecundario, Temperatura temperaturaMaxima) {
     this.tipo = tipo;
     this.material = material;
     this.trama = trama;
     this.colorPrincipal = colorPrincipal;
     this.colorSecundario = colorSecundario;
+    this.temperaturaMaxima = temperaturaMaxima;
   }
   public static Borrador tipo(Tipo tipo) {
     return new Borrador(tipo);
@@ -22,4 +25,5 @@ public class Prenda {
   public Trama getTrama() { return trama; }
   public Color getColorPrincipal() { return colorPrincipal; }
   public Material getMaterial() { return material; }
+  public Temperatura getTemperaturaMaxima() { return temperaturaMaxima; }
 }

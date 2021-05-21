@@ -6,12 +6,12 @@ import ar.edu.utn.frba.dds.QMP.excepciones.MaterialYTipoIncompatiblesException;
 import java.util.Objects;
 
 public class Borrador {
-  // Parámetros obligatorios
+
   private final Tipo tipo;
   private Material material;
   private Trama trama = Trama.LISA;
   private Color colorPrincipal;
-  // Parámetro opcional
+  private Temperatura temperatura;
   private Color colorSecundario = null;
 
   public Borrador(Tipo tipo) {
@@ -39,15 +39,19 @@ public class Borrador {
     return this;
   }
 
+  public Borrador setTemperatura(Temperatura temperatura){
+    this.temperatura = Objects.requireNonNull(temperatura);
+    return this;
+  }
+
   public Borrador setColorSecundario(Color colorSecundario) {
     this.colorSecundario = colorSecundario;
     return this;
   }
 
-
   public Prenda build() {
     this.validarConstruccion();
-    return new Prenda(tipo,material,trama,colorPrincipal,colorSecundario);
+    return new Prenda(tipo,material,trama,colorPrincipal,colorSecundario,temperatura);
   }
 
   public void validarConstruccion() {
