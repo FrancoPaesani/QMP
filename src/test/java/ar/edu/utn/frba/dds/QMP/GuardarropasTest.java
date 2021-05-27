@@ -2,6 +2,7 @@ package ar.edu.utn.frba.dds.QMP;
 
 import ar.edu.utn.frba.dds.QMP.guardarropas.Guardarropas;
 import ar.edu.utn.frba.dds.QMP.prenda.*;
+import ar.edu.utn.frba.dds.serviciosMeteorologicos.Temperatura;
 import org.junit.Test;
 
 import java.util.Arrays;

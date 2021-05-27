@@ -1,4 +1,6 @@
-package ar.edu.utn.frba.dds.QMP.prenda;
+package ar.edu.utn.frba.dds.serviciosMeteorologicos;
+
+import ar.edu.utn.frba.dds.QMP.prenda.UnidadTemperatura;
 
 public class Temperatura {
     private double digito;

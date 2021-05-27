@@ -3,7 +3,7 @@ package ar.edu.utn.frba.dds.QMP.guardarropas;
 import ar.edu.utn.frba.dds.QMP.GeneradorDeSugerencias;
 import ar.edu.utn.frba.dds.QMP.atuendo.Atuendo;
 import ar.edu.utn.frba.dds.QMP.prenda.Prenda;
-import ar.edu.utn.frba.dds.QMP.prenda.Temperatura;
+import ar.edu.utn.frba.dds.serviciosMeteorologicos.Temperatura;
 
 import java.util.HashSet;
 import java.util.Set;

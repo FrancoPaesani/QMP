@@ -1,5 +1,7 @@
 package ar.edu.utn.frba.dds.QMP.prenda;
 
+import ar.edu.utn.frba.dds.serviciosMeteorologicos.Temperatura;
+
 public class Prenda {
   private final Tipo tipo;
   private final Material material;

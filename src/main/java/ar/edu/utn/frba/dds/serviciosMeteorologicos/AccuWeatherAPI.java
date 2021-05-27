@@ -1,16 +1,13 @@
-package ar.edu.utn.frba.dds.accuWeather;
+package ar.edu.utn.frba.dds.serviciosMeteorologicos;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class AccuWeatherAPI {
-	private int llamadasEnDia = 0;
-	private LocalDate fechaUltimaLlamada = LocalDate.now();
 
-    private List<Map<String, Object>> getWeather(String ciudad) {
+    public List<Map<String, Object>> getWeather(String ciudad) {
 		return Arrays.asList(new HashMap<String, Object>(){{
 			put("DateTime", "2019-05-03T01:00:00-03:00");
 			put("EpochDateTime", 1556856000);
@@ -26,19 +23,5 @@ public class AccuWeatherAPI {
 				put("UnitType", 18);
 			}});
 		}});
-	}
-
-	public List<Map<String, Object>> getBsAsWeather() {
-		if (validarCantLlamads())
-			return this.getWeather("Buenos Aires");
-		else throw new CantLlamadasAccuWeather("Se llegó al límite de llamadas gratis diarias.");
-    }
-
-	private boolean validarCantLlamads() {
-		if(fechaUltimaLlamada.equals(LocalDate.now()))
-			llamadasEnDia += 1;
-		else
-			fechaUltimaLlamada = LocalDate.now();
-		return llamadasEnDia < 10;
 	}
 }
