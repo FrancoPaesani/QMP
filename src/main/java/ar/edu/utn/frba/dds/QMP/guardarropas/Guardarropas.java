@@ -35,9 +35,4 @@ public class Guardarropas {
                 prendasParaTemperatura(prendasSuperiores,temperatura),prendasParaTemperatura(prendasInferiores,temperatura),
                 prendasParaTemperatura(calzados,temperatura),prendasParaTemperatura(accesorios,temperatura));
     }
-
-  /*  public void agregarSuperiores(Set<Prenda> prendasSuperiores) { this.prendasSuperiores.addAll(prendasSuperiores); }
-    public void agregarInferiores(Set<Prenda> prendasInferiores) { this.prendasInferiores.addAll(prendasInferiores); }
-    public void agregarCalzados(Set<Prenda> calzados) { this.calzados.addAll(calzados); }
-    public void agregarAccesorios(Set<Prenda> accesorios) { this.accesorios.addAll(accesorios); }*/
 }

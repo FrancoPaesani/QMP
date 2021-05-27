@@ -3,9 +3,9 @@ package ar.edu.utn.frba.dds.serviciosMeteorologicos;
 import ar.edu.utn.frba.dds.QMP.prenda.UnidadTemperatura;
 
 import java.time.LocalDate;
+import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class ServicioMeteorologicoAccuWeather implements ServicioMeteorologico{
   private AccuWeatherAPI api;
@@ -18,7 +18,11 @@ public class ServicioMeteorologicoAccuWeather implements ServicioMeteorologico{
   @Override
   public Temperatura getTemperatura(String ciudad) {
     Map<String ,Object> response = api.getWeather(ciudad).get(0);
-    return new Temperatura((double) response.get("Temperatura"), UnidadTemperatura.FAHRENHEIT);
+    HashMap<String, Object> temperature = (HashMap<String, Object>) response.get("Temperature");
+    Object value = temperature.get("Value");
+    Double tempValue = new Double((int) value);
+    this.llamadasEnDia++;
+    return new Temperatura(tempValue, UnidadTemperatura.FAHRENHEIT);
   }
 
   public boolean validarCantLlamads() {
