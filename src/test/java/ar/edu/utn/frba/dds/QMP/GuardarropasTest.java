@@ -1,8 +1,9 @@
 package ar.edu.utn.frba.dds.QMP;
 
-import ar.edu.utn.frba.dds.QMP.guardarropas.Guardarropas;
+import ar.edu.utn.frba.dds.QMP.usuario.Guardarropas;
 import ar.edu.utn.frba.dds.QMP.prenda.*;
 import ar.edu.utn.frba.dds.serviciosMeteorologicos.Temperatura;
+import ar.edu.utn.frba.dds.serviciosMeteorologicos.UnidadTemperatura;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -30,7 +31,7 @@ public class GuardarropasTest {
             .build();
     @Test
     public void UnGuardarropaFiltraPrendasDependiendoLaTemperaturaDeCadaPrendaYLaTempActual() {
-        Guardarropas guardarropas = new Guardarropas(null,null,null,null);
+        Guardarropas guardarropas = new Guardarropas(null,null,null,null,null);
         Set<Prenda> setPrendas = new HashSet<>(Arrays.asList(remeraComun, pantalonComun));
        assertEquals(guardarropas
                 .prendasParaTemperatura(setPrendas, tempActual).size(),1);
@@ -40,7 +41,7 @@ public class GuardarropasTest {
     public void DosPrendasXCategoriaYUnaSolaAptaTemperaturaMeGenera1SoloAtuendo() {
         Set<Prenda> prendas = new HashSet<>(Arrays.asList(remeraComun, pantalonComun));
         Guardarropas guardarropas =
-                new Guardarropas(prendas,prendas,prendas,prendas);
+                new Guardarropas(prendas,prendas,prendas,prendas,null);
         GeneradorDeSugerencias generadorDeSugerencias = new GeneradorDeSugerencias();
         assertEquals(guardarropas.sugerenciaParaTemperatura(tempActual,generadorDeSugerencias)
                 .size(), 1);

@@ -1,7 +1,7 @@
 package ar.edu.utn.frba.dds.QMP;
 
 import ar.edu.utn.frba.dds.serviciosMeteorologicos.Temperatura;
-import ar.edu.utn.frba.dds.QMP.prenda.UnidadTemperatura;
+import ar.edu.utn.frba.dds.serviciosMeteorologicos.UnidadTemperatura;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

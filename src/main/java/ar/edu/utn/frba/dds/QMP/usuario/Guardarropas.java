@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.dds.QMP.guardarropas;
+package ar.edu.utn.frba.dds.QMP.usuario;
 
 import ar.edu.utn.frba.dds.QMP.GeneradorDeSugerencias;
 import ar.edu.utn.frba.dds.QMP.atuendo.Atuendo;
@@ -16,12 +16,16 @@ public class Guardarropas {
     private Set<Prenda> prendasInferiores = new HashSet<>();
     private Set<Prenda> calzados = new HashSet<>();
     private Set<Prenda> accesorios = new HashSet<>();
+    //private EstiloRopa estiloRopa;
 
-    public Guardarropas(Set<Prenda> prendasSuperiores, Set<Prenda> prendasInferiores, Set<Prenda> calzados, Set<Prenda> accesorios) {
+    public Guardarropas(Set<Prenda> prendasSuperiores, Set<Prenda> prendasInferiores,
+                        Set<Prenda> calzados, Set<Prenda> accesorios,
+                        EstiloRopa estiloRopa) {
         this.prendasSuperiores = prendasSuperiores;
         this.prendasInferiores = prendasInferiores;
         this.calzados = calzados;
         this.accesorios = accesorios;
+        //this.estiloRopa = estiloRopa;
     }
 
     public Set<Prenda> prendasParaTemperatura(Set<Prenda> prendas, Temperatura temperatura) {

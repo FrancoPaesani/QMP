@@ -1,9 +1,6 @@
 package ar.edu.utn.frba.dds.serviciosMeteorologicos;
 
-import ar.edu.utn.frba.dds.QMP.prenda.UnidadTemperatura;
-
 import java.time.LocalDate;
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
 

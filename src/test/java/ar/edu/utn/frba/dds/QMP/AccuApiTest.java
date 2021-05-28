@@ -1,12 +1,8 @@
 package ar.edu.utn.frba.dds.QMP;
 
-import ar.edu.utn.frba.dds.QMP.prenda.UnidadTemperatura;
 import ar.edu.utn.frba.dds.serviciosMeteorologicos.AccuWeatherAPI;
 import ar.edu.utn.frba.dds.serviciosMeteorologicos.ServicioMeteorologicoAccuWeather;
-import ar.edu.utn.frba.dds.serviciosMeteorologicos.Temperatura;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockedConstruction;
 import org.mockito.Mockito;
 
 import java.util.Arrays;
