@@ -1,8 +1,4 @@
-QMP - Iteración 2
+QMP - Iteración 5
 ===========
-Solución (Diagrama de Clases)
-===========
-<img src="https://github.com/FrancoPaesani/QMP/blob/main/QMP2.jpg"></img>
+<img src="https://github.com/FrancoPaesani/QMP/blob/Iteracion5/QMP-Iteraci%C3%B3n%205.png"> </img>
 
-
-Se eligió delegar la creación de la Prenda al builder para que la creación tenga un orden, se valide mejor y sea más intuitiva de realizar.

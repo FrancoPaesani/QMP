@@ -1,11 +1,7 @@
 package ar.edu.utn.frba.dds.QMP;
-import ar.edu.utn.frba.dds.QMP.atuendo.Atuendo;
-import ar.edu.utn.frba.dds.QMP.atuendo.ColegioSanJuan;
-import ar.edu.utn.frba.dds.QMP.atuendo.InstitutoJohnson;
 import ar.edu.utn.frba.dds.QMP.excepciones.CamposObligatoriosIncompletosException;
 import ar.edu.utn.frba.dds.QMP.excepciones.MaterialYTipoIncompatiblesException;
 import ar.edu.utn.frba.dds.QMP.prenda.*;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -108,18 +104,6 @@ public class PrendaBuilderTest {
     catch (MaterialYTipoIncompatiblesException exception) {
       assertTrue(exception.getMessage().contains("El tipo [REMERA] no permite al material [JEAN]"));
     }
-  }
-
-  @Test
-  public void uniformeJohnsonTieneZapatosNegros() {
-    Atuendo uniformeJohnson = InstitutoJohnson.crearUniforme();
-    assertEquals(uniformeJohnson.getCalzado().getColorPrincipal().getRgb(),new Color("#000000").getRgb());
-  }
-
-  @Test
-  public void uniformeSanJuanTieneChombaPique() {
-    Atuendo uniformeSanJuan = ColegioSanJuan.crearUniforme();
-    assertEquals(uniformeSanJuan.getPrendaSuperior().getMaterial(),Material.PIQUE);
   }
 
 }

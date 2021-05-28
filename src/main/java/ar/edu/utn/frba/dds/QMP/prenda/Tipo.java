@@ -11,7 +11,8 @@ public enum Tipo {
   PANTALON(Categoria.PRENDA_INFERIOR, Arrays.asList(Material.CUERO,Material.ALGODON, Material.JEAN, Material.ACETATO)),
   ZAPATOS(Categoria.CALZADO, Arrays.asList(Material.LANA,Material.CUERO)),
   ZAPATILLAS(Categoria.CALZADO, Arrays.asList(Material.LANA,Material.CUERO,Material.ALGODON)),
-  GORRA(Categoria.ACCESORIO, Arrays.asList(Material.CUERO,Material.ALGODON,Material.LANA));
+  GORRA(Categoria.ACCESORIO, Arrays.asList(Material.CUERO,Material.ALGODON,Material.LANA,Material.JEAN)),
+  MUNIEQUERA(Categoria.ACCESORIO, Arrays.asList(Material.CUERO));
   private final List<Material> materialesPosibles = new ArrayList<>();
   private final Categoria categoria;
 
