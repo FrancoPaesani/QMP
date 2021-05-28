@@ -15,7 +15,7 @@ public class Temperatura {
         return this.toFarenheit() > temperatura.toFarenheit();
     }
 
-    private double toFarenheit() {
+    public double toFarenheit() {
         if(this.unidad.equals(UnidadTemperatura.CELSIUS))
             return this.digito*1.8+32;
         return 1.8*(this.digito-273) + 32;

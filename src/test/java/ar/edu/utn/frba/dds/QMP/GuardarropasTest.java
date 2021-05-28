@@ -29,21 +29,22 @@ public class GuardarropasTest {
             .setColorPrincipal(new Color("#00000"))
             .setTemperatura(new Temperatura(20,UnidadTemperatura.CELSIUS))
             .build();
+
     @Test
     public void UnGuardarropaFiltraPrendasDependiendoLaTemperaturaDeCadaPrendaYLaTempActual() {
-        Guardarropas guardarropas = new Guardarropas(null,null,null,null,null);
         Set<Prenda> setPrendas = new HashSet<>(Arrays.asList(remeraComun, pantalonComun));
-       assertEquals(guardarropas
+        Guardarropas guardarropas = new Guardarropas(null,null);
+        assertEquals(guardarropas
                 .prendasParaTemperatura(setPrendas, tempActual).size(),1);
     }
 
     @Test
-    public void DosPrendasXCategoriaYUnaSolaAptaTemperaturaMeGenera1SoloAtuendo() {
+    public void NoGeneraSugerenciaSiFaltaAlgunaCategoria() {
         Set<Prenda> prendas = new HashSet<>(Arrays.asList(remeraComun, pantalonComun));
         Guardarropas guardarropas =
-                new Guardarropas(prendas,prendas,prendas,prendas,null);
+                new Guardarropas(prendas,null);
         GeneradorDeSugerencias generadorDeSugerencias = new GeneradorDeSugerencias();
         assertEquals(guardarropas.sugerenciaParaTemperatura(tempActual,generadorDeSugerencias)
-                .size(), 1);
+                .size(), 0);
     }
 }

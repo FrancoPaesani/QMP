@@ -26,4 +26,10 @@ public class TemperaturaTest {
         Temperatura temp2 = new Temperatura(20,UnidadTemperatura.CELSIUS);
         assertTrue(temp2.esMayor(tempActual));
     }
+
+    @Test
+    public void CeroCelsiusSon32F() {
+        Temperatura tempC = new Temperatura(0, UnidadTemperatura.CELSIUS);
+        assertEquals(tempC.toFarenheit(),32,0);
+    }
 }
