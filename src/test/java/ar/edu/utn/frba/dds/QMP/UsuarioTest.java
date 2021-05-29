@@ -62,7 +62,7 @@ public class UsuarioTest {
     fran.agregarGuardarropas(guardarropas);
     Usuario tomi = new Usuario(null,generadorDeSugerencias);
 
-    fran.compartirGuardarropasCon(tomi,guardarropas);
+    tomi.agregarGuardarropas(guardarropas);
     assertEquals(tomi.cantidadDeGuardarropas(),1);
   }
 

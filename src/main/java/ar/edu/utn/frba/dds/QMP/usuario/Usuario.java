@@ -33,9 +33,6 @@ public class Usuario {
     return atuendos;
   }
 
-  public void compartirGuardarropasCon(Usuario usuario, Guardarropas guardarropas) {
-    usuario.agregarGuardarropas(guardarropas);
-  }
   public void aceptarPropuestas() { //si se quisieran aceptar todas las propuestas en la cola
     this.propuestas.forEach(Propuesta::aceptarPropuesta);
   }
