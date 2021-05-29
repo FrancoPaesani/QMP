@@ -71,7 +71,7 @@ public class UsuarioTest {
     Usuario fran = new Usuario(null,generadorDeSugerencias);
     Usuario ale = new Usuario(null,generadorDeSugerencias);
 
-    fran.agregarPropuestaDeAgregarA(ale,mock(Prenda.class),guardarropas);
+    ale.agregarPropuesta(new PropuestaAgregar(mock(Prenda.class),guardarropas));
     assertEquals(ale.cantidadDePropuestas(),1);
   }
 
@@ -83,7 +83,7 @@ public class UsuarioTest {
 
     ale.agregarGuardarropas(guardarropasPropuesto);
 
-    fran.agregarPropuestaDeAgregarA(ale,mock(Prenda.class),guardarropasPropuesto);
+    ale.agregarPropuesta(new PropuestaAgregar(mock(Prenda.class),guardarropasPropuesto));
     ale.aceptarPropuestas();
 
     assertEquals(guardarropasPropuesto.cantidadDePrendas(),1);
@@ -94,55 +94,65 @@ public class UsuarioTest {
     Usuario fran = new Usuario(null,generadorDeSugerencias);
     Usuario ale = new Usuario(null,generadorDeSugerencias);
 
-    fran.agregarPropuestaDeSacarA(ale,mock(Prenda.class),guardarropas);
+    ale.agregarPropuesta(new PropuestaSacar(mock(Prenda.class),guardarropas));
     assertEquals(ale.cantidadDePropuestas(),1);
+  }
+
+  @Test
+  public void PuedoAceptarUnaPropuesta() {
+    Usuario ale = new Usuario(null,generadorDeSugerencias);
+    Propuesta propuesta = new PropuestaSacar(mock(Prenda.class),guardarropas);
+
+    ale.agregarPropuesta(propuesta);
+    propuesta.aceptarPropuesta();
+
+    assertEquals(propuesta.getEstado(),EstadoPropuesta.ACEPTADO);
   }
 
   @Test
   public void AlguienAceptaPropuestaDeSacarPrendaEnUnoConUnaPredaYLuegoEstaVacio() {
     Prenda prendaMock = mock(Prenda.class);
 
-    Usuario fran = new Usuario(null,generadorDeSugerencias);
     Usuario ale = new Usuario(null,generadorDeSugerencias);
     Guardarropas guardarropasPropuesto = new Guardarropas(null,null);
 
     ale.agregarGuardarropas(guardarropasPropuesto);
     guardarropasPropuesto.agregarPrenda(prendaMock);
 
-    fran.agregarPropuestaDeSacarA(ale,prendaMock,guardarropasPropuesto);
+    ale.agregarPropuesta(new PropuestaSacar(prendaMock,guardarropasPropuesto));
     ale.aceptarPropuestas();
 
     assertEquals(guardarropasPropuesto.cantidadDePrendas(),0);
   }
 
   @Test
-  public void PuedoRechazarLasPropuestasQueTenga() {
-    Usuario fran = new Usuario(null,generadorDeSugerencias);
+  public void PuedoRechazarUnaPropuestaQueTenga() {
     Usuario ale = new Usuario(null,generadorDeSugerencias);
+    Propuesta propuesta = new PropuestaSacar(mock(Prenda.class),guardarropas);
 
-    fran.agregarPropuestaDeSacarA(ale,mock(Prenda.class),guardarropas);
-    fran.agregarPropuestaDeAgregarA(ale,mock(Prenda.class),guardarropas);
+    ale.agregarPropuesta(propuesta);
+    ale.agregarPropuesta(propuesta);
 
-    ale.rechazarPropuestas();
+    ale.rechazarPropuesta(propuesta);
 
-    assertEquals(ale.cantidadDePropuestas(),0);
+    assertEquals(ale.cantidadDePropuestas(),1);
   }
 
   @Test
-  public void PuedoRechazarLasPropuestasQueAcepteParaVolverAlEstadoAnteriorDelGuardarropas() {
+  public void PuedoRechazarLasPropuestasQueAcepteParaEliminarlas() {
     Prenda prendaMock1 = mock(Prenda.class);
     Prenda prendaMock2 = mock(Prenda.class);
 
-    Usuario fran = new Usuario(null,generadorDeSugerencias);
     Usuario ale = new Usuario(null,generadorDeSugerencias);
     Guardarropas guardarropasPropuesto = new Guardarropas(null,null);
-
+    Propuesta propuesta1 = new PropuestaAgregar(prendaMock1,guardarropasPropuesto);
+    Propuesta propuesta2 = new PropuestaAgregar(prendaMock2,guardarropasPropuesto);
     ale.agregarGuardarropas(guardarropasPropuesto);
-    fran.agregarPropuestaDeAgregarA(ale,prendaMock1,guardarropasPropuesto);
-    fran.agregarPropuestaDeAgregarA(ale,prendaMock2,guardarropasPropuesto);
+    ale.agregarPropuesta(propuesta1);
+    ale.agregarPropuesta(propuesta2);
 
-    ale.aceptarPropuestas();
-    ale.deshacerPropuestasAceptadas();
+    ale.rechazarPropuesta(propuesta1);
+    ale.rechazarPropuesta(propuesta2);
 
     assertEquals(guardarropasPropuesto.cantidadDePrendas(),0);
   }

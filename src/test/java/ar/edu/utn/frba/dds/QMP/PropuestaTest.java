@@ -8,7 +8,6 @@ import ar.edu.utn.frba.dds.QMP.usuario.Propuesta;
 import ar.edu.utn.frba.dds.QMP.usuario.PropuestaAgregar;
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.verification.VerificationMode;
 
 import static org.mockito.Mockito.*;
 
@@ -22,14 +21,6 @@ public class PropuestaTest {
     Propuesta propuesta = new PropuestaAgregar(prenda,guardarropas);
     propuesta.aceptarPropuesta();
     Assert.assertEquals(propuesta.getEstado(), EstadoPropuesta.ACEPTADO);
-  }
-
-  @Test
-  public void SiAceptoUnaPropuestaYLaDeshagoCambiaSuEstadoAPendiente() {
-    Propuesta propuesta = new PropuestaAgregar(prenda,guardarropas);
-    propuesta.aceptarPropuesta();
-    propuesta.deshacerPropuesta();
-    Assert.assertEquals(propuesta.getEstado(), EstadoPropuesta.PENDIENTE);
   }
 
   @Test

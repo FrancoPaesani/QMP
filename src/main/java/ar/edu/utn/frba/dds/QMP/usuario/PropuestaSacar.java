@@ -20,12 +20,7 @@ public class PropuestaSacar implements Propuesta{
 
   @Override
   public void deshacerPropuesta() {
-    if (this.estado == EstadoPropuesta.ACEPTADO){
       guardarropasAProponer.agregarPrenda(prendaAProponer);
-      this.estado = EstadoPropuesta.PENDIENTE;
-    }
-    else
-      throw new NoSeDeshacePropuestaNoAceptada("No podés deshacer una propuesta no aceptada.");
   }
 
   public EstadoPropuesta getEstado() {
