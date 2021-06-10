@@ -28,7 +28,7 @@ public class UsuarioTest {
   @Test
   public void PuedoAgregarUnaPrendaACualquierGuardarropa() {
     Usuario fran = new Usuario(null,generadorDeSugerencias);
-    Guardarropas guardarropasPropuesto = new Guardarropas(null,null);
+    Guardarropas guardarropasPropuesto = new Guardarropas(null);
 
     fran.agregarGuardarropas(guardarropasPropuesto);
     fran.agregarPrendaAGuardarropas(guardarropasPropuesto,mock(Prenda.class));
@@ -79,7 +79,7 @@ public class UsuarioTest {
   public void AlguienAceptaPropuestaDeAgregarPrendaEnUnoVacioYLuegoTieneUnaPrenda() {
     Usuario fran = new Usuario(null,generadorDeSugerencias);
     Usuario ale = new Usuario(null,generadorDeSugerencias);
-    Guardarropas guardarropasPropuesto = new Guardarropas(null,null);
+    Guardarropas guardarropasPropuesto = new Guardarropas(null);
 
     ale.agregarGuardarropas(guardarropasPropuesto);
 
@@ -114,7 +114,7 @@ public class UsuarioTest {
     Prenda prendaMock = mock(Prenda.class);
 
     Usuario ale = new Usuario(null,generadorDeSugerencias);
-    Guardarropas guardarropasPropuesto = new Guardarropas(null,null);
+    Guardarropas guardarropasPropuesto = new Guardarropas(null);
 
     ale.agregarGuardarropas(guardarropasPropuesto);
     guardarropasPropuesto.agregarPrenda(prendaMock);
@@ -144,7 +144,7 @@ public class UsuarioTest {
     Prenda prendaMock2 = mock(Prenda.class);
 
     Usuario ale = new Usuario(null,generadorDeSugerencias);
-    Guardarropas guardarropasPropuesto = new Guardarropas(null,null);
+    Guardarropas guardarropasPropuesto = new Guardarropas(null);
     Propuesta propuesta1 = new PropuestaAgregar(prendaMock1,guardarropasPropuesto);
     Propuesta propuesta2 = new PropuestaAgregar(prendaMock2,guardarropasPropuesto);
     ale.agregarGuardarropas(guardarropasPropuesto);

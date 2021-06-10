@@ -42,7 +42,7 @@ public class Usuario {
       this.propuestas.remove(propuesta);
     }
     else
-      throw new NoSeDeshacePropuestaNoAceptada("No se puede deshacer una propuesta no aceptada.");
+      throw new NoSeDeshacePropuestaNoAceptada("No se puede deshacer una propuesta no aceptada.");//TODO cambiar nombre de excepción.
   }
   public List<Propuesta> obtenerPropuestasAceptadas() {
     return this.propuestas.stream()

@@ -14,12 +14,11 @@ import java.util.stream.Collectors;
 public class Guardarropas {
 
   private Set<Prenda> prendas = new HashSet<>();
-  //private EstiloRopa estiloRopa;
 
-  public Guardarropas(Set<Prenda> prendas, EstiloRopa estiloRopa) {
+
+  public Guardarropas(Set<Prenda> prendas) {
     if (prendas != null)
       this.prendas.addAll(prendas);
-    //this.estiloRopa = estiloRopa;
   }
 
   public Set<Prenda> prendasParaTemperatura(Set<Prenda> prendas, Temperatura temperatura) {

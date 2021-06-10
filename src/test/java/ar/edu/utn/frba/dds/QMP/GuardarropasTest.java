@@ -33,7 +33,7 @@ public class GuardarropasTest {
     @Test
     public void UnGuardarropaFiltraPrendasDependiendoLaTemperaturaDeCadaPrendaYLaTempActual() {
         Set<Prenda> setPrendas = new HashSet<>(Arrays.asList(remeraComun, pantalonComun));
-        Guardarropas guardarropas = new Guardarropas(null,null);
+        Guardarropas guardarropas = new Guardarropas(null);
         assertEquals(guardarropas
                 .prendasParaTemperatura(setPrendas, tempActual).size(),1);
     }
@@ -42,7 +42,7 @@ public class GuardarropasTest {
     public void NoGeneraSugerenciaSiFaltaAlgunaCategoria() {
         Set<Prenda> prendas = new HashSet<>(Arrays.asList(remeraComun, pantalonComun));
         Guardarropas guardarropas =
-                new Guardarropas(prendas,null);
+                new Guardarropas(prendas);
         GeneradorDeSugerencias generadorDeSugerencias = new GeneradorDeSugerencias();
         assertEquals(guardarropas.sugerenciaParaTemperatura(tempActual,generadorDeSugerencias)
                 .size(), 0);
