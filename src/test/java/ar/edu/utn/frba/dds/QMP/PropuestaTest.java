@@ -2,10 +2,10 @@ package ar.edu.utn.frba.dds.QMP;
 
 import ar.edu.utn.frba.dds.QMP.excepciones.NoSeDeshacePropuestaNoAceptada;
 import ar.edu.utn.frba.dds.QMP.prenda.Prenda;
-import ar.edu.utn.frba.dds.QMP.usuario.EstadoPropuesta;
+import ar.edu.utn.frba.dds.QMP.usuario.propuestas.EstadoPropuesta;
 import ar.edu.utn.frba.dds.QMP.usuario.Guardarropas;
-import ar.edu.utn.frba.dds.QMP.usuario.Propuesta;
-import ar.edu.utn.frba.dds.QMP.usuario.PropuestaAgregar;
+import ar.edu.utn.frba.dds.QMP.usuario.propuestas.Propuesta;
+import ar.edu.utn.frba.dds.QMP.usuario.propuestas.PropuestaAgregar;
 import org.junit.Assert;
 import org.junit.Test;
 

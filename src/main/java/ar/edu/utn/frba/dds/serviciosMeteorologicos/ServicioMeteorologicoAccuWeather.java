@@ -1,7 +1,11 @@
 package ar.edu.utn.frba.dds.serviciosMeteorologicos;
 
+import ar.edu.utn.frba.dds.QMP.alertas.AlertaMeteorologica;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ServicioMeteorologicoAccuWeather implements ServicioMeteorologico{
@@ -20,6 +24,11 @@ public class ServicioMeteorologicoAccuWeather implements ServicioMeteorologico{
     Double tempValue = new Double((int) value);
     this.llamadasEnDia++;
     return new Temperatura(tempValue, UnidadTemperatura.FAHRENHEIT);
+  }
+
+  @Override
+  public List<AlertaMeteorologica> getAlertas(String ciudad) {
+    return new ArrayList<AlertaMeteorologica>();
   }
 
   public boolean validarCantLlamads() {

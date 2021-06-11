@@ -6,6 +6,7 @@ import ar.edu.utn.frba.dds.QMP.prenda.Categoria;
 import ar.edu.utn.frba.dds.QMP.prenda.Prenda;
 import ar.edu.utn.frba.dds.serviciosMeteorologicos.Temperatura;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -19,6 +20,13 @@ public class Guardarropas {
   public Guardarropas(Set<Prenda> prendas) {
     if (prendas != null)
       this.prendas.addAll(prendas);
+  }
+
+  public Atuendo getSugerencia(GeneradorDeSugerencias generadorDeSugerencias) {
+    return new ArrayList<>(generadorDeSugerencias.generarSugerenciaConAccesorios(this.filtrarPrendasPor(Categoria.PRENDA_SUPERIOR),
+        this.filtrarPrendasPor(Categoria.PRENDA_INFERIOR), this.filtrarPrendasPor(Categoria.CALZADO),
+        this.filtrarPrendasPor(Categoria.ACCESORIO), 1))
+        .get(0);
   }
 
   public Set<Prenda> prendasParaTemperatura(Set<Prenda> prendas, Temperatura temperatura) {

@@ -4,16 +4,16 @@ import ar.edu.utn.frba.dds.QMP.atuendo.Atuendo;
 import ar.edu.utn.frba.dds.QMP.atuendo.InstitutoJohnson;
 import ar.edu.utn.frba.dds.QMP.prenda.*;
 import ar.edu.utn.frba.dds.QMP.usuario.*;
+import ar.edu.utn.frba.dds.QMP.usuario.propuestas.EstadoPropuesta;
+import ar.edu.utn.frba.dds.QMP.usuario.propuestas.Propuesta;
+import ar.edu.utn.frba.dds.QMP.usuario.propuestas.PropuestaAgregar;
+import ar.edu.utn.frba.dds.QMP.usuario.propuestas.PropuestaSacar;
 import ar.edu.utn.frba.dds.serviciosMeteorologicos.Temperatura;
 import ar.edu.utn.frba.dds.serviciosMeteorologicos.UnidadTemperatura;
-import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.Mockito;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
@@ -106,7 +106,7 @@ public class UsuarioTest {
     ale.agregarPropuesta(propuesta);
     propuesta.aceptarPropuesta();
 
-    assertEquals(propuesta.getEstado(),EstadoPropuesta.ACEPTADO);
+    assertEquals(propuesta.getEstado(), EstadoPropuesta.ACEPTADO);
   }
 
   @Test

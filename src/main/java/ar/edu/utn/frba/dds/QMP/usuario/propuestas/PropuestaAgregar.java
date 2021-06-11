@@ -1,7 +1,7 @@
-package ar.edu.utn.frba.dds.QMP.usuario;
+package ar.edu.utn.frba.dds.QMP.usuario.propuestas;
 
-import ar.edu.utn.frba.dds.QMP.excepciones.NoSeDeshacePropuestaNoAceptada;
 import ar.edu.utn.frba.dds.QMP.prenda.Prenda;
+import ar.edu.utn.frba.dds.QMP.usuario.Guardarropas;
 
 public class PropuestaAgregar implements Propuesta{
   private Prenda prendaAProponer;

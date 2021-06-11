@@ -1,0 +1,42 @@
+package ar.edu.utn.frba.dds.QMP;
+
+import ar.edu.utn.frba.dds.QMP.alertas.AlertaMeteorologica;
+import ar.edu.utn.frba.dds.QMP.usuario.Usuario;
+import ar.edu.utn.frba.dds.QMP.usuario.acciones.AccionEnvioMail;
+import ar.edu.utn.frba.dds.QMP.usuario.acciones.AccionNotificar;
+import ar.edu.utn.frba.dds.QMP.usuario.acciones.AccionRecalculoSugerencia;
+import ar.edu.utn.frba.dds.notificacion.MailSender;
+import ar.edu.utn.frba.dds.notificacion.NotificationService;
+import org.junit.Test;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
+
+public class AccionesTests {
+
+  @Test
+  public void AccionNotificarUsaNotificarDelService() {
+    NotificationService notificationService = mock(NotificationService.class);
+    Usuario usuario = mock(Usuario.class);
+    AccionNotificar accionNotificar = new AccionNotificar(notificationService);
+    accionNotificar.realizarAccion(usuario, AlertaMeteorologica.GRANIZO);
+    verify(notificationService,atLeastOnce()).notificar(any(),any());
+  }
+
+  @Test
+  public void AccionMailUsaNotificarDelMailer() {
+    MailSender mailSender = mock(MailSender.class);
+    Usuario usuario = mock(Usuario.class);
+    AccionEnvioMail accionNotificar = new AccionEnvioMail(mailSender);
+    accionNotificar.realizarAccion(usuario, AlertaMeteorologica.GRANIZO);
+    verify(mailSender,atLeastOnce()).notificar(any(),any());
+  }
+
+  @Test
+  public void AccionRecalcularUtilizaMetodoDelUsuario() {
+    Usuario usuario = mock(Usuario.class);
+    AccionRecalculoSugerencia recalculoSugerencia = new AccionRecalculoSugerencia();
+    recalculoSugerencia.realizarAccion(usuario, AlertaMeteorologica.GRANIZO);
+    verify(usuario,atLeastOnce()).calcularSugerenciaDiaria();
+  }
+}
