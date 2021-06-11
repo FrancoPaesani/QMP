@@ -31,23 +31,6 @@ public class AccuApiTest {
     }
 
     @Test
-    public void NoPuedoLLamarMasDe10VecesConAccuWApi() {
-        AccuWeatherAPI lowApi = Mockito.mock(AccuWeatherAPI.class);
-        Mockito.when(lowApi.getWeather("Buenos Aires")).thenReturn(Arrays.asList(new HashMap<String, Object>(){{
-            put("Temperature", new HashMap<String, Object>(){{
-                put("Value", 57);
-                put("Unit", "F");
-                put("UnitType", 18);
-            }});
-        }}));
-        ServicioMeteorologicoAccuWeather api = new ServicioMeteorologicoAccuWeather(lowApi);
-        for (int i = 0; i < 10 ; i++) {
-            api.getTemperatura("Buenos Aires");
-        }
-        assertTrue(!api.validarCantLlamads());
-    }
-
-    @Test
     public void accuApiGetWeatherSeEjecutaUnaVez() {
         AccuWeatherAPI api = Mockito.mock(AccuWeatherAPI.class);
         api.getWeather("Buenos Aires");
@@ -59,15 +42,6 @@ public class AccuApiTest {
         ServicioMeteorologicoAccuWeather api = Mockito.mock(ServicioMeteorologicoAccuWeather.class);
         api.getTemperatura("Buenos Aires");
         Mockito.verify(api,Mockito.only()).getTemperatura(anyString());
-    }
-
-    @Test
-    public void noPuedoLlamarAPIMasDe10Veces() {
-        ServicioMeteorologicoAccuWeather api = Mockito.mock(ServicioMeteorologicoAccuWeather.class);
-        for (int i = 0; i < 10 ; i++) {
-            api.getTemperatura("Buenos Aires");
-        }
-        assertTrue(!api.validarCantLlamads());
     }
 
     @Test

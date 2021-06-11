@@ -30,12 +30,5 @@ public class ServicioMeteorologicoAccuWeather implements ServicioMeteorologico{
   public List<AlertaMeteorologica> getAlertas(String ciudad) {
     return new ArrayList<AlertaMeteorologica>();
   }
-
-  public boolean validarCantLlamads() {
-    if(fechaUltimaLlamada.equals(LocalDate.now()))
-      llamadasEnDia += 1;
-    else
-      fechaUltimaLlamada = LocalDate.now();
-    return llamadasEnDia < 10;
-  }
+  //TODO: modelar una cache para minimizar llamados.
 }
