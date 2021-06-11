@@ -28,7 +28,7 @@ public class ServicioMeteorologicoAccuWeather implements ServicioMeteorologico{
 
   @Override
   public List<AlertaMeteorologica> getAlertas(String ciudad) {
-    return new ArrayList<AlertaMeteorologica>();
+    return this.api.getAlertas(ciudad);
   }
   //TODO: modelar una cache para minimizar llamados.
 }

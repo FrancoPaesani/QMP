@@ -1,11 +1,10 @@
 package ar.edu.utn.frba.dds.serviciosMeteorologicos;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import ar.edu.utn.frba.dds.QMP.alertas.AlertaMeteorologica;
 
-public class AccuWeatherAPI {
+import java.util.*;
+
+public class AccuWeatherAPI {//TODO: mover a test.
 
     public List<Map<String, Object>> getWeather(String ciudad) {
 		return Arrays.asList(new HashMap<String, Object>(){{
@@ -23,5 +22,8 @@ public class AccuWeatherAPI {
 				put("UnitType", 18);
 			}});
 		}});
+	}
+	public List<AlertaMeteorologica> getAlertas(String ciudad) {
+		return new ArrayList<AlertaMeteorologica>();
 	}
 }
