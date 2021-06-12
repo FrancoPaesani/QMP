@@ -3,17 +3,16 @@ package ar.edu.utn.frba.dds.serviciosMeteorologicos;
 import ar.edu.utn.frba.dds.QMP.alertas.AlertaMeteorologica;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ServicioMeteorologicoAccuWeather implements ServicioMeteorologico{
-  private AccuWeatherAPI api;
+  private Api api;
   private int llamadasEnDia = 0;
   private LocalDate fechaUltimaLlamada = LocalDate.now();
 
-  public ServicioMeteorologicoAccuWeather(AccuWeatherAPI api) {
+  public ServicioMeteorologicoAccuWeather(Api api) {
     this.api = api;
   }
   @Override

@@ -1,10 +1,11 @@
-package ar.edu.utn.frba.dds.serviciosMeteorologicos;
+package ar.edu.utn.frba.dds;
 
 import ar.edu.utn.frba.dds.QMP.alertas.AlertaMeteorologica;
+import ar.edu.utn.frba.dds.serviciosMeteorologicos.Api;
 
 import java.util.*;
 
-public class AccuWeatherAPI {//TODO: mover a test.
+public class AccuWeatherAPI implements Api {
 
     public List<Map<String, Object>> getWeather(String ciudad) {
 		return Arrays.asList(new HashMap<String, Object>(){{

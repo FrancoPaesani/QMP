@@ -1,6 +1,6 @@
 package ar.edu.utn.frba.dds.QMP;
 
-import ar.edu.utn.frba.dds.serviciosMeteorologicos.AccuWeatherAPI;
+import ar.edu.utn.frba.dds.AccuWeatherAPI;
 import ar.edu.utn.frba.dds.serviciosMeteorologicos.ServicioMeteorologicoAccuWeather;
 import org.junit.Test;
 import org.mockito.Mockito;
