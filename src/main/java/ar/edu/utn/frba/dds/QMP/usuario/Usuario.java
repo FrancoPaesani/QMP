@@ -24,10 +24,8 @@ public class Usuario {
   private Atuendo sugerenciaDiaria;
   private List<Accion> acciones = new ArrayList<>();
 
-  public Usuario(List<Guardarropas> guardarropas,
-                 GeneradorDeSugerencias generadorDeSugerencias) {
-    if(guardarropas!=null)
-      guardarropas.addAll(guardarropas);
+  public Usuario(List<Guardarropas> guardarropas, GeneradorDeSugerencias generadorDeSugerencias) {
+    guardarropas.addAll(Objects.requireNonNull(guardarropas));
     this.generadorDeSugerencias = generadorDeSugerencias;
   }
   public Atuendo getSugerenciaDiaria() {

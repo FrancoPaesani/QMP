@@ -33,7 +33,7 @@ public class GuardarropasTest {
     @Test
     public void UnGuardarropaFiltraPrendasDependiendoLaTemperaturaDeCadaPrendaYLaTempActual() {
         Set<Prenda> setPrendas = new HashSet<>(Arrays.asList(remeraComun, pantalonComun));
-        Guardarropas guardarropas = new Guardarropas(null);
+        Guardarropas guardarropas = new Guardarropas(new HashSet<>());
         assertEquals(guardarropas
                 .prendasParaTemperatura(setPrendas, tempActual).size(),1);
     }

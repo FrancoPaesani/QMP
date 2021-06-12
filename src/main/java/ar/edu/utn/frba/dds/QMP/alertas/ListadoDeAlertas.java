@@ -6,6 +6,7 @@ import ar.edu.utn.frba.dds.serviciosMeteorologicos.ServicioMeteorologico;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ListadoDeAlertas {
   private List<AlertaMeteorologica> alertaMeteorologicas = new ArrayList<>();
@@ -20,10 +21,8 @@ public class ListadoDeAlertas {
                           ListadoDeUsuarios usuarios, String ciudad) {
     this.ciudad = ciudad;
     this.servicioMeteorologico = servicioMeteorologico;
-    if(alertaMeteorologicas != null)
-      this.alertaMeteorologicas.addAll(alertasMeteorologicas);
-    if(usuarios != null)
-      this.usuarios = usuarios;
+    this.alertaMeteorologicas.addAll(Objects.requireNonNull(alertasMeteorologicas));
+    this.usuarios = Objects.requireNonNull(usuarios);
   }
 
   public void actualizarAlertas() {

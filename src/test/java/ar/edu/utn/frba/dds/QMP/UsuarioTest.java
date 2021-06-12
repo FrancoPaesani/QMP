@@ -12,6 +12,7 @@ import ar.edu.utn.frba.dds.serviciosMeteorologicos.Temperatura;
 import ar.edu.utn.frba.dds.serviciosMeteorologicos.UnidadTemperatura;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -27,8 +28,8 @@ public class UsuarioTest {
 
   @Test
   public void PuedoAgregarUnaPrendaACualquierGuardarropa() {
-    Usuario fran = new Usuario(null,generadorDeSugerencias);
-    Guardarropas guardarropasPropuesto = new Guardarropas(null);
+    Usuario fran = new Usuario(new ArrayList<>(),generadorDeSugerencias);
+    Guardarropas guardarropasPropuesto = new Guardarropas(new HashSet<>());
 
     fran.agregarGuardarropas(guardarropasPropuesto);
     fran.agregarPrendaAGuardarropas(guardarropasPropuesto,mock(Prenda.class));
@@ -38,7 +39,7 @@ public class UsuarioTest {
 
   @Test
   public void SugerenciaParaUsuarioConUnGuardarropasLollamaUnaVez() {
-    Usuario fran = new Usuario(null,generadorDeSugerencias);
+    Usuario fran = new Usuario(new ArrayList<>(),generadorDeSugerencias);
     fran.agregarGuardarropas(guardarropas);
     fran.getSugerenciaParaTemperatura(temperatura20F);
 
@@ -50,7 +51,7 @@ public class UsuarioTest {
     when(guardarropas.sugerenciaParaTemperatura(any(Temperatura.class),
         any(GeneradorDeSugerencias.class))).thenReturn(new HashSet<>(Arrays.asList(atuendoInstituto)));
 
-    Usuario fran = new Usuario(null,generadorDeSugerencias);
+    Usuario fran = new Usuario(new ArrayList<>(),generadorDeSugerencias);
     fran.agregarGuardarropas(guardarropas);
 
     assertEquals(fran.getSugerenciaParaTemperatura(temperatura20F).size(),1);
@@ -58,9 +59,9 @@ public class UsuarioTest {
 
   @Test
   public void PuedoCompartirMiGuardarropasConUnAmigo() {
-    Usuario fran = new Usuario(null,generadorDeSugerencias);
+    Usuario fran = new Usuario(new ArrayList<>(),generadorDeSugerencias);
     fran.agregarGuardarropas(guardarropas);
-    Usuario tomi = new Usuario(null,generadorDeSugerencias);
+    Usuario tomi = new Usuario(new ArrayList<>(),generadorDeSugerencias);
 
     tomi.agregarGuardarropas(guardarropas);
     assertEquals(tomi.cantidadDeGuardarropas(),1);
@@ -68,8 +69,8 @@ public class UsuarioTest {
 
   @Test
   public void PuedoAgregarPropuestaDeAgregarAAlguien() {
-    Usuario fran = new Usuario(null,generadorDeSugerencias);
-    Usuario ale = new Usuario(null,generadorDeSugerencias);
+    Usuario fran = new Usuario(new ArrayList<>(),generadorDeSugerencias);
+    Usuario ale = new Usuario(new ArrayList<>(),generadorDeSugerencias);
 
     ale.agregarPropuesta(new PropuestaAgregar(mock(Prenda.class),guardarropas));
     assertEquals(ale.cantidadDePropuestas(),1);
@@ -77,9 +78,9 @@ public class UsuarioTest {
 
   @Test
   public void AlguienAceptaPropuestaDeAgregarPrendaEnUnoVacioYLuegoTieneUnaPrenda() {
-    Usuario fran = new Usuario(null,generadorDeSugerencias);
-    Usuario ale = new Usuario(null,generadorDeSugerencias);
-    Guardarropas guardarropasPropuesto = new Guardarropas(null);
+    Usuario fran = new Usuario(new ArrayList<>(),generadorDeSugerencias);
+    Usuario ale = new Usuario(new ArrayList<>(),generadorDeSugerencias);
+    Guardarropas guardarropasPropuesto = new Guardarropas(new HashSet<>());
 
     ale.agregarGuardarropas(guardarropasPropuesto);
 
@@ -91,8 +92,8 @@ public class UsuarioTest {
 
   @Test
   public void PuedoAgregarPropuestaDeSacarAAlguien() {
-    Usuario fran = new Usuario(null,generadorDeSugerencias);
-    Usuario ale = new Usuario(null,generadorDeSugerencias);
+    Usuario fran = new Usuario(new ArrayList<>(),generadorDeSugerencias);
+    Usuario ale = new Usuario(new ArrayList<>(),generadorDeSugerencias);
 
     ale.agregarPropuesta(new PropuestaSacar(mock(Prenda.class),guardarropas));
     assertEquals(ale.cantidadDePropuestas(),1);
@@ -100,7 +101,7 @@ public class UsuarioTest {
 
   @Test
   public void PuedoAceptarUnaPropuesta() {
-    Usuario ale = new Usuario(null,generadorDeSugerencias);
+    Usuario ale = new Usuario(new ArrayList<>(),generadorDeSugerencias);
     Propuesta propuesta = new PropuestaSacar(mock(Prenda.class),guardarropas);
 
     ale.agregarPropuesta(propuesta);
@@ -113,8 +114,8 @@ public class UsuarioTest {
   public void AlguienAceptaPropuestaDeSacarPrendaEnUnoConUnaPredaYLuegoEstaVacio() {
     Prenda prendaMock = mock(Prenda.class);
 
-    Usuario ale = new Usuario(null,generadorDeSugerencias);
-    Guardarropas guardarropasPropuesto = new Guardarropas(null);
+    Usuario ale = new Usuario(new ArrayList<>(),generadorDeSugerencias);
+    Guardarropas guardarropasPropuesto = new Guardarropas(new HashSet<>());
 
     ale.agregarGuardarropas(guardarropasPropuesto);
     guardarropasPropuesto.agregarPrenda(prendaMock);
@@ -127,7 +128,7 @@ public class UsuarioTest {
 
   @Test
   public void PuedoRechazarUnaPropuestaQueTenga() {
-    Usuario ale = new Usuario(null,generadorDeSugerencias);
+    Usuario ale = new Usuario(new ArrayList<>(),generadorDeSugerencias);
     Propuesta propuesta = new PropuestaSacar(mock(Prenda.class),guardarropas);
 
     ale.agregarPropuesta(propuesta);
@@ -143,8 +144,8 @@ public class UsuarioTest {
     Prenda prendaMock1 = mock(Prenda.class);
     Prenda prendaMock2 = mock(Prenda.class);
 
-    Usuario ale = new Usuario(null,generadorDeSugerencias);
-    Guardarropas guardarropasPropuesto = new Guardarropas(null);
+    Usuario ale = new Usuario(new ArrayList<>(),generadorDeSugerencias);
+    Guardarropas guardarropasPropuesto = new Guardarropas(new HashSet<>());
     Propuesta propuesta1 = new PropuestaAgregar(prendaMock1,guardarropasPropuesto);
     Propuesta propuesta2 = new PropuestaAgregar(prendaMock2,guardarropasPropuesto);
     ale.agregarGuardarropas(guardarropasPropuesto);

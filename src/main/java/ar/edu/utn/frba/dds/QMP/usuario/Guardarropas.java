@@ -8,6 +8,7 @@ import ar.edu.utn.frba.dds.serviciosMeteorologicos.Temperatura;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -18,8 +19,7 @@ public class Guardarropas {
 
 
   public Guardarropas(Set<Prenda> prendas) {
-    if (prendas != null)
-      this.prendas.addAll(prendas);
+    this.prendas.addAll(Objects.requireNonNull(prendas));
   }
 
   public Atuendo getSugerencia(GeneradorDeSugerencias generadorDeSugerencias) {
