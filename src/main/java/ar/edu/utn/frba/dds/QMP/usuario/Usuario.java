@@ -10,10 +10,7 @@ import ar.edu.utn.frba.dds.QMP.usuario.propuestas.EstadoPropuesta;
 import ar.edu.utn.frba.dds.QMP.usuario.propuestas.Propuesta;
 import ar.edu.utn.frba.dds.serviciosMeteorologicos.Temperatura;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Usuario {
@@ -51,12 +48,21 @@ public class Usuario {
   public void sacarAccion(Accion accion) {
     this.acciones.remove(accion);
   }
+
   public Set<Atuendo> getSugerenciaParaTemperatura(Temperatura temperatura) {
-    Set<Atuendo> atuendos = new HashSet<>();
+    return
+        this.guardarropas.stream()
+            .map(guardarropas ->
+                    guardarropas.sugerenciaParaTemperatura(temperatura,
+                        this.generadorDeSugerencias)
+            )
+            .flatMap(Collection::stream).collect(Collectors.toSet());
+
+    /*Set<Atuendo> atuendos = new HashSet<>();
     this.guardarropas.forEach(guardarropas ->
         atuendos.addAll(guardarropas.sugerenciaParaTemperatura(
             temperatura,this.generadorDeSugerencias)));
-    return atuendos;
+    return atuendos;*/
   }
 
   public void setMail(String mail) {
