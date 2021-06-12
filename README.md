@@ -1,4 +1,11 @@
-QMP - Iteración 5
+QMP - Iteración 6
 ===========
-<img src="https://github.com/FrancoPaesani/QMP/blob/main/QMP-Iteraci%C3%B3n%205.png"> </img>
+Bonus
+===========
+  <li>Proceso Batch?</li><br>
+  
+  
+Lo resaltado en violeta es la nueva iteración.
+
+<img src="https://github.com/FrancoPaesani/QMP/blob/main/QMP-Iteraci%C3%B3n%206.png"> </img>
 
