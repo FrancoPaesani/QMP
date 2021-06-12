@@ -26,4 +26,12 @@ public class PropuestaAgregar implements Propuesta{
   public EstadoPropuesta getEstado() {
     return estado;
   }
+
+  @Override
+  public boolean estaAceptada() {
+    if(this.estado.equals(EstadoPropuesta.ACEPTADO))//TODO: sacar typetest
+      return true;
+    else
+      return false;
+  }
 }

@@ -4,4 +4,5 @@ public interface Propuesta {
   public void aceptarPropuesta();
   public void deshacerPropuesta();
   public EstadoPropuesta getEstado();
+  public boolean estaAceptada();
 }

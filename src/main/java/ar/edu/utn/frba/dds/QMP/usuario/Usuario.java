@@ -86,7 +86,7 @@ public class Usuario {
   }
   public List<Propuesta> obtenerPropuestasAceptadas() {
     return this.propuestas.stream()
-        .filter(propuesta -> propuesta.getEstado().equals(EstadoPropuesta.ACEPTADO)).collect(Collectors.toList());
+        .filter(propuesta -> propuesta.estaAceptada()).collect(Collectors.toList());
   }
   public void agregarPropuesta(Propuesta propuesta) {
     this.propuestas.add(propuesta);
