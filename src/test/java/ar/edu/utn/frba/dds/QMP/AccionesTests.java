@@ -19,7 +19,7 @@ public class AccionesTests {
     NotificationService notificationService = mock(NotificationService.class);
     Usuario usuario = mock(Usuario.class);
     AccionNotificar accionNotificar = new AccionNotificar(notificationService);
-    accionNotificar.realizarAccion(usuario, AlertaMeteorologica.GRANIZO);
+    accionNotificar.anteNuevaAlertaMeteorologica(usuario, AlertaMeteorologica.GRANIZO);
     verify(notificationService,atLeastOnce()).notificar(any(),any());
   }
 
@@ -28,7 +28,7 @@ public class AccionesTests {
     MailSender mailSender = mock(MailSender.class);
     Usuario usuario = mock(Usuario.class);
     AccionEnvioMail accionNotificar = new AccionEnvioMail(mailSender);
-    accionNotificar.realizarAccion(usuario, AlertaMeteorologica.GRANIZO);
+    accionNotificar.anteNuevaAlertaMeteorologica(usuario, AlertaMeteorologica.GRANIZO);
     verify(mailSender,atLeastOnce()).notificar(any(),any());
   }
 
@@ -36,7 +36,7 @@ public class AccionesTests {
   public void AccionRecalcularUtilizaMetodoDelUsuario() {
     Usuario usuario = mock(Usuario.class);
     AccionRecalculoSugerencia recalculoSugerencia = new AccionRecalculoSugerencia();
-    recalculoSugerencia.realizarAccion(usuario, AlertaMeteorologica.GRANIZO);
+    recalculoSugerencia.anteNuevaAlertaMeteorologica(usuario, AlertaMeteorologica.GRANIZO);
     verify(usuario,atLeastOnce()).calcularSugerenciaDiaria();
   }
 }

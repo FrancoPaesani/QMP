@@ -10,7 +10,7 @@ public class AccionNotificar implements Accion{
     this.notificationService = notificationService;
   }
   @Override
-  public void realizarAccion(Usuario usuario, AlertaMeteorologica alertaMeteorologica) {
+  public void anteNuevaAlertaMeteorologica(Usuario usuario, AlertaMeteorologica alertaMeteorologica) {
     this.notificationService.notificar(usuario.getNumero(),alertaMeteorologica.getMensaje());
   }
 }

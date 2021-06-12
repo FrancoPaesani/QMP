@@ -4,5 +4,5 @@ import ar.edu.utn.frba.dds.QMP.alertas.AlertaMeteorologica;
 import ar.edu.utn.frba.dds.QMP.usuario.Usuario;
 
 public interface Accion {
-  public void realizarAccion(Usuario usuario, AlertaMeteorologica alertaMeteorologica);
+  public void anteNuevaAlertaMeteorologica(Usuario usuario, AlertaMeteorologica alertaMeteorologica);
 }

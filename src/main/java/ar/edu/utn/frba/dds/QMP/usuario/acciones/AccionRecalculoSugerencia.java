@@ -5,7 +5,7 @@ import ar.edu.utn.frba.dds.QMP.usuario.Usuario;
 
 public class AccionRecalculoSugerencia implements Accion{
   @Override
-  public void realizarAccion(Usuario usuario, AlertaMeteorologica alertaMeteorologica) {
+  public void anteNuevaAlertaMeteorologica(Usuario usuario, AlertaMeteorologica alertaMeteorologica) {
     usuario.calcularSugerenciaDiaria();
   }
 }

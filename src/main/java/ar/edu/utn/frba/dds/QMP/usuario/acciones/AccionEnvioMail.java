@@ -10,7 +10,7 @@ public class AccionEnvioMail implements Accion{
     this.mailSender = mailSender;
   }
   @Override
-  public void realizarAccion(Usuario usuario, AlertaMeteorologica alertaMeteorologica) {
+  public void anteNuevaAlertaMeteorologica(Usuario usuario, AlertaMeteorologica alertaMeteorologica) {
    this.mailSender.notificar(usuario.getMail(), alertaMeteorologica.getMensaje());
   }
 }

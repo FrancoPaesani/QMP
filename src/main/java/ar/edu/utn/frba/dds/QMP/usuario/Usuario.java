@@ -42,7 +42,7 @@ public class Usuario {
   public void realizarAccionesSegun(AlertaMeteorologica alertaMeteorologica) {
     this.acciones.forEach(
         accion ->
-            accion.realizarAccion(this,alertaMeteorologica)
+            accion.anteNuevaAlertaMeteorologica(this,alertaMeteorologica)
     );
   }
   public void agregarAccion(Accion accion) {
