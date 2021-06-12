@@ -2,11 +2,11 @@ package ar.edu.utn.frba.dds.QMP.usuario.acciones;
 
 import ar.edu.utn.frba.dds.QMP.alertas.AlertaMeteorologica;
 import ar.edu.utn.frba.dds.QMP.usuario.Usuario;
-import ar.edu.utn.frba.dds.notificacion.MailSender;
+import ar.edu.utn.frba.dds.notificacion.MailSenderAdapter;
 
 public class AccionEnvioMail implements Accion{
-  private MailSender mailSender;
-  public AccionEnvioMail(MailSender mailSender) {
+  private MailSenderAdapter mailSender;
+  public AccionEnvioMail(MailSenderAdapter mailSender) {
     this.mailSender = mailSender;
   }
   @Override

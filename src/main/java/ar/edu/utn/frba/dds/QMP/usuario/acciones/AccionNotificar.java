@@ -2,11 +2,11 @@ package ar.edu.utn.frba.dds.QMP.usuario.acciones;
 
 import ar.edu.utn.frba.dds.QMP.alertas.AlertaMeteorologica;
 import ar.edu.utn.frba.dds.QMP.usuario.Usuario;
-import ar.edu.utn.frba.dds.notificacion.NotificationService;
+import ar.edu.utn.frba.dds.notificacion.NotificationAdapter;
 
 public class AccionNotificar implements Accion{
-  private NotificationService notificationService;
-  public AccionNotificar(NotificationService notificationService) {
+  private NotificationAdapter notificationService;
+  public AccionNotificar(NotificationAdapter notificationService) {
     this.notificationService = notificationService;
   }
   @Override

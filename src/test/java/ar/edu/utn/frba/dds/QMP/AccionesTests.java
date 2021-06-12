@@ -5,8 +5,8 @@ import ar.edu.utn.frba.dds.QMP.usuario.Usuario;
 import ar.edu.utn.frba.dds.QMP.usuario.acciones.AccionEnvioMail;
 import ar.edu.utn.frba.dds.QMP.usuario.acciones.AccionNotificar;
 import ar.edu.utn.frba.dds.QMP.usuario.acciones.AccionRecalculoSugerencia;
-import ar.edu.utn.frba.dds.notificacion.MailSender;
-import ar.edu.utn.frba.dds.notificacion.NotificationService;
+import ar.edu.utn.frba.dds.notificacion.MailSenderAdapter;
+import ar.edu.utn.frba.dds.notificacion.NotificationAdapter;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;
@@ -16,7 +16,7 @@ public class AccionesTests {
 
   @Test
   public void AccionNotificarUsaNotificarDelService() {
-    NotificationService notificationService = mock(NotificationService.class);
+    NotificationAdapter notificationService = mock(NotificationAdapter.class);
     Usuario usuario = mock(Usuario.class);
     AccionNotificar accionNotificar = new AccionNotificar(notificationService);
     accionNotificar.anteNuevaAlertaMeteorologica(usuario, AlertaMeteorologica.GRANIZO);
@@ -25,7 +25,7 @@ public class AccionesTests {
 
   @Test
   public void AccionMailUsaNotificarDelMailer() {
-    MailSender mailSender = mock(MailSender.class);
+    MailSenderAdapter mailSender = mock(MailSenderAdapter.class);
     Usuario usuario = mock(Usuario.class);
     AccionEnvioMail accionNotificar = new AccionEnvioMail(mailSender);
     accionNotificar.anteNuevaAlertaMeteorologica(usuario, AlertaMeteorologica.GRANIZO);

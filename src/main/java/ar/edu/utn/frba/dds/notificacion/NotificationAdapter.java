@@ -1,6 +1,6 @@
 package ar.edu.utn.frba.dds.notificacion;
 
-public class NotificationService implements Notificacion{
+public class NotificationAdapter implements Notificador{
 
   @Override
   public void notificar(String to, String text) {
