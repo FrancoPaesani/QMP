@@ -51,9 +51,6 @@ public class Usuario {
   public void sacarAccion(Accion accion) {
     this.acciones.remove(accion);
   }
-  public void setAcciones(List<Accion> acciones) {  //para no romper el constructor de usuario usado en los demás tests.
-    this.acciones.addAll(acciones);
-  }
   public Set<Atuendo> getSugerenciaParaTemperatura(Temperatura temperatura) {
     Set<Atuendo> atuendos = new HashSet<>();
     this.guardarropas.forEach(guardarropas ->
